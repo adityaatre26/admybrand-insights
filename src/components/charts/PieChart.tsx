@@ -173,7 +173,7 @@ export const PieChart = () => {
         </div>
       </div>
 
-      <div className="flex flex-col lg:flex-row lg:items-center h-[470px] -mt-[4.5rem]">
+      <div className="flex flex-col lg:flex-row lg:items-center h-[470px] -mt-[4.5rem] md:-mt-0">
         {/* Chart */}
         <div className="flex-1 h-full">
           <ResponsiveContainer width="100%" height="100%">
