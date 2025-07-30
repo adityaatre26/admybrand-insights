@@ -80,7 +80,7 @@ export const Dashboard = () => {
         animate="visible"
       >
         {/* Header */}
-        <motion.div className="mb-6 sm:mb-8" variants={sectionVariants}>
+        <motion.div className="mb-8 sm:mb-8" variants={sectionVariants}>
           <div className="flex items-center space-x-3 mb-2">
             <BarChart3 className="w-6 sm:w-8 h-6 sm:h-8 text-chart-1" />
             <h1 className="text-2xl sm:text-3xl font-bold text-foreground">
@@ -94,7 +94,7 @@ export const Dashboard = () => {
 
         {/* Metrics Grid */}
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-6 sm:mb-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-6 mb-8 sm:mb-8"
           variants={sectionVariants}
         >
           {metrics.map((metric, index) => (
@@ -104,11 +104,11 @@ export const Dashboard = () => {
 
         {/* Charts Section */}
         <motion.div
-          className="space-y-6 sm:space-y-8 mb-6 sm:mb-8"
+          className="space-y-8 sm:space-y-8 mb-8 sm:mb-8"
           variants={sectionVariants}
         >
           {/* Revenue Chart */}
-          <div className="flex items-center space-x-2 mb-4">
+          <div className="flex items-center space-x-2 mb-6 sm:mb-4">
             <Activity className="w-5 h-5 text-chart-1" />
             <h2 className="text-lg sm:text-xl font-semibold text-foreground">
               Performance Trends
@@ -117,7 +117,7 @@ export const Dashboard = () => {
           <RevenueChart />
 
           {/* Charts Grid */}
-          <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 sm:gap-8">
             <BarChart />
             <PieChart />
           </div>
@@ -125,7 +125,7 @@ export const Dashboard = () => {
 
         {/* Data Table Section */}
         <motion.div variants={sectionVariants}>
-          <div className="flex items-center space-x-2 mb-4 sm:mb-6">
+          <div className="flex items-center space-x-2 mb-6 sm:mb-6">
             <PieChartIcon className="w-5 h-5 text-chart-2" />
             <h2 className="text-lg sm:text-xl font-semibold text-foreground">
               Detailed Analytics

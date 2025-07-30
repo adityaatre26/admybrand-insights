@@ -11,27 +11,27 @@ interface MetricCardProps {
   delay?: number;
 }
 
-export const MetricCard = ({ 
-  title, 
-  value, 
-  change, 
-  changeLabel, 
-  icon, 
-  delay = 0 
+export const MetricCard = ({
+  title,
+  value,
+  change,
+  changeLabel,
+  icon,
+  delay = 0,
 }: MetricCardProps) => {
   const [animatedValue, setAnimatedValue] = useState(0);
   const isPositive = change >= 0;
-  
+
   // Extract numeric value for animation
-  const numericValue = parseFloat(value.replace(/[^0-9.]/g, ''));
-  
+  const numericValue = parseFloat(value.replace(/[^0-9.]/g, ""));
+
   useEffect(() => {
     const timer = setTimeout(() => {
       const duration = 1000;
       const steps = 60;
       const increment = numericValue / steps;
       let current = 0;
-      
+
       const counter = setInterval(() => {
         current += increment;
         if (current >= numericValue) {
@@ -41,19 +41,21 @@ export const MetricCard = ({
           setAnimatedValue(current);
         }
       }, duration / steps);
-      
+
       return () => clearInterval(counter);
     }, delay);
-    
+
     return () => clearTimeout(timer);
   }, [numericValue, delay]);
 
   const formatAnimatedValue = (val: number) => {
-    if (value.includes('$')) {
+    if (value.includes("$") && value.includes("K")) {
+      return `$${val.toFixed(1)}K`;
+    } else if (value.includes("$")) {
       return `$${val.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
-    } else if (value.includes('K')) {
-      return `${(val / 1000).toFixed(1)}K`;
-    } else if (value.includes('%')) {
+    } else if (value.includes("K")) {
+      return `${val.toFixed(1)}K`;
+    } else if (value.includes("%")) {
       return `${val.toFixed(1)}%`;
     }
     return val.toLocaleString();
@@ -80,13 +82,13 @@ export const MetricCard = ({
           >
             {formatAnimatedValue(animatedValue)}
           </motion.div>
-          
+
           <div className="flex items-center space-x-2">
             <motion.div
               className={`flex items-center space-x-1 px-2 py-1 rounded-full text-xs font-medium ${
                 isPositive
-                  ? 'bg-success/10 text-success'
-                  : 'bg-destructive/10 text-destructive'
+                  ? "bg-success/10 text-success"
+                  : "bg-destructive/10 text-destructive"
               }`}
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -104,7 +106,7 @@ export const MetricCard = ({
             </span>
           </div>
         </div>
-        
+
         <motion.div
           className="p-3 bg-gradient-to-br from-chart-1/20 to-chart-2/20 rounded-lg"
           initial={{ rotate: -10, scale: 0.8 }}

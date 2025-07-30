@@ -79,7 +79,7 @@ export const BarChart = () => {
   return (
     <motion.div
       id="bar-chart"
-      className="card-premium h-[500px]"
+      className="card-premium h-[550px]"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.3 }}
