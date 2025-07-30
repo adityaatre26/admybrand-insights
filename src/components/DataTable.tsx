@@ -217,7 +217,7 @@ export const DataTable = () => {
           <Button
             variant="ghost"
             size="sm"
-            className="text-xs hover:bg-card-hover glass rounded-lg p-2"
+            className="text-xs hover:bg-card-hover glass rounded-lg p-2 min-h-[44px] min-w-[44px] touch-manipulation"
             onClick={handleExport}
             disabled={isLoading}
           >

@@ -131,13 +131,13 @@ export const PieChart = () => {
           </p>
         </div>
 
-        <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-2 z-100">
           {/* Data type filters */}
           <div className="flex items-center space-x-1 glass rounded-lg p-1">
             <Button
               variant={activeData === "traffic" ? "default" : "ghost"}
               size="sm"
-              className={`text-xs ${
+              className={`text-xs min-h-[44px] touch-manipulation ${
                 activeData === "traffic"
                   ? "bg-primary text-primary-foreground"
                   : "hover:bg-card-hover"
@@ -149,7 +149,7 @@ export const PieChart = () => {
             <Button
               variant={activeData === "device" ? "default" : "ghost"}
               size="sm"
-              className={`text-xs ${
+              className={`text-xs min-h-[44px] touch-manipulation ${
                 activeData === "device"
                   ? "bg-primary text-primary-foreground"
                   : "hover:bg-card-hover"
@@ -164,7 +164,7 @@ export const PieChart = () => {
           <Button
             variant="ghost"
             size="sm"
-            className="text-xs hover:bg-card-hover glass rounded-lg p-2"
+            className="text-xs hover:bg-card-hover glass rounded-lg p-2 min-h-[44px] min-w-[44px] touch-manipulation z-[999]"
             onClick={handleDownload}
           >
             <Download className="w-3 h-3 mr-1" />
@@ -173,7 +173,7 @@ export const PieChart = () => {
         </div>
       </div>
 
-      <div className="flex flex-col lg:flex-row lg:items-center h-[470px] -mt-[4.5rem] md:-mt-0">
+      <div className="flex flex-col lg:flex-row lg:items-center h-[470px] -mt-[4rem] lg:-mt-0">
         {/* Chart */}
         <div className="flex-1 h-full">
           <ResponsiveContainer width="100%" height="100%">

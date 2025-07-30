@@ -102,7 +102,7 @@ export const BarChart = () => {
             <Button
               variant={activePeriod === "monthly" ? "default" : "ghost"}
               size="sm"
-              className={`text-xs ${
+              className={`text-xs min-h-[44px] touch-manipulation ${
                 activePeriod === "monthly"
                   ? "bg-primary text-primary-foreground"
                   : "hover:bg-card-hover"
@@ -115,7 +115,7 @@ export const BarChart = () => {
             <Button
               variant={activePeriod === "quarterly" ? "default" : "ghost"}
               size="sm"
-              className={`text-xs ${
+              className={`text-xs min-h-[44px] touch-manipulation ${
                 activePeriod === "quarterly"
                   ? "bg-primary text-primary-foreground"
                   : "hover:bg-card-hover"
@@ -131,7 +131,7 @@ export const BarChart = () => {
           <Button
             variant="ghost"
             size="sm"
-            className="text-xs hover:bg-card-hover glass rounded-lg p-2"
+            className="text-xs hover:bg-card-hover glass rounded-lg p-2 min-h-[44px] min-w-[44px] touch-manipulation"
             onClick={handleDownload}
           >
             <Download className="w-3 h-3 mr-1" />

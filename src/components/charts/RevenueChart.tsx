@@ -97,7 +97,7 @@ export const RevenueChart = () => {
   return (
     <motion.div
       id="revenue-chart"
-      className="card-premium h-[500px]"
+      className="card-premium h-[580px] md:h-[500px]"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.2 }}
@@ -114,30 +114,57 @@ export const RevenueChart = () => {
 
         <div className="flex flex-col sm:flex-row sm:items-center gap-2">
           {/* Time filters */}
-          <div className="flex items-center space-x-1 glass rounded-lg p-1">
-            {Object.entries(timeFilters).map(([key, filter]) => (
+          <div className="flex flex-wrap items-center gap-1">
+            {/* First row: 7d and 30d filters */}
+            <div className="flex items-center space-x-1 glass rounded-lg p-1">
               <Button
-                key={key}
-                variant={activeFilter === key ? "default" : "ghost"}
+                variant={activeFilter === "7d" ? "default" : "ghost"}
                 size="sm"
-                className={`text-xs ${
-                  activeFilter === key
+                className={`text-xs min-h-[44px] touch-manipulation ${
+                  activeFilter === "7d"
                     ? "bg-primary text-primary-foreground"
                     : "hover:bg-card-hover"
                 }`}
-                onClick={() => setActiveFilter(key as TimeFilter)}
+                onClick={() => setActiveFilter("7d")}
               >
-                <Calendar className="w-3 h-3 mr-1" />
-                {filter.label.split(" ").slice(-2).join(" ")}
+                <Calendar className="w-3 h-3 mr-1" />7 days
               </Button>
-            ))}
+              <Button
+                variant={activeFilter === "30d" ? "default" : "ghost"}
+                size="sm"
+                className={`text-xs min-h-[44px] touch-manipulation ${
+                  activeFilter === "30d"
+                    ? "bg-primary text-primary-foreground"
+                    : "hover:bg-card-hover"
+                }`}
+                onClick={() => setActiveFilter("30d")}
+              >
+                <Calendar className="w-3 h-3 mr-1" />1 month
+              </Button>
+            </div>
+
+            {/* Second row on mobile: 1y filter */}
+            <div className="flex items-center space-x-1 glass rounded-lg p-1 w-full sm:w-auto">
+              <Button
+                variant={activeFilter === "1y" ? "default" : "ghost"}
+                size="sm"
+                className={`text-xs min-h-[44px] touch-manipulation w-full sm:w-auto ${
+                  activeFilter === "1y"
+                    ? "bg-primary text-primary-foreground"
+                    : "hover:bg-card-hover"
+                }`}
+                onClick={() => setActiveFilter("1y")}
+              >
+                <Calendar className="w-3 h-3 mr-1" />1 year
+              </Button>
+            </div>
           </div>
 
           {/* Download button */}
           <Button
             variant="ghost"
             size="sm"
-            className="text-xs hover:bg-card-hover glass rounded-lg p-2"
+            className="text-xs hover:bg-card-hover glass rounded-lg p-2 min-h-[44px] min-w-[44px] touch-manipulation"
             onClick={handleDownload}
           >
             <Download className="w-3 h-3 mr-1" />
