@@ -62,14 +62,28 @@
     --muted-foreground: 0 0% 60%;
 
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(0 0% 6%) 0%, hsl(0 0% 8%) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(0 0% 9%) 0%, hsl(0 0% 11%) 100%);
-    --gradient-glass: linear-gradient(135deg, hsl(0 0% 10% / 0.7) 0%, hsl(0 0% 15% / 0.3) 100%);
+    --gradient-primary: linear-gradient(
+      135deg,
+      hsl(0 0% 6%) 0%,
+      hsl(0 0% 8%) 100%
+    );
+    --gradient-card: linear-gradient(
+      145deg,
+      hsl(0 0% 9%) 0%,
+      hsl(0 0% 11%) 100%
+    );
+    --gradient-glass: linear-gradient(
+      135deg,
+      hsl(0 0% 10% / 0.7) 0%,
+      hsl(0 0% 15% / 0.3) 100%
+    );
 
     /* Shadows */
     --shadow-sm: 0 1px 2px 0 hsl(0 0% 0% / 0.2);
-    --shadow-md: 0 4px 6px -1px hsl(0 0% 0% / 0.3), 0 2px 4px -1px hsl(0 0% 0% / 0.2);
-    --shadow-lg: 0 10px 15px -3px hsl(0 0% 0% / 0.4), 0 4px 6px -2px hsl(0 0% 0% / 0.3);
+    --shadow-md: 0 4px 6px -1px hsl(0 0% 0% / 0.3),
+      0 2px 4px -1px hsl(0 0% 0% / 0.2);
+    --shadow-lg: 0 10px 15px -3px hsl(0 0% 0% / 0.4),
+      0 4px 6px -2px hsl(0 0% 0% / 0.3);
     --shadow-glass: 0 8px 32px 0 hsl(0 0% 0% / 0.4);
 
     --radius: 0.75rem;
@@ -84,16 +98,31 @@
   body {
     @apply bg-background text-foreground;
     background: 
-      radial-gradient(circle at 20% 80%, hsla(0, 0%, 8%, 0.8) 0%, transparent 50%),
-      radial-gradient(circle at 80% 20%, hsla(0, 0%, 10%, 0.8) 0%, transparent 50%),
+      /* Subtle grid mesh overlay */ linear-gradient(
+        hsl(var(--border) / 0.6) 1px,
+        transparent 1px
+      ),
+      linear-gradient(90deg, hsl(var(--border) / 0.6) 1px, transparent 1px),
+      /* Existing radial gradients */
+        radial-gradient(
+          circle at 20% 80%,
+          hsla(0, 0%, 8%, 0.8) 0%,
+          transparent 50%
+        ),
+      radial-gradient(
+        circle at 80% 20%,
+        hsla(0, 0%, 10%, 0.8) 0%,
+        transparent 50%
+      ),
       hsl(var(--background));
+    background-size: 28px 28px, 28px 28px, 100% 100%, 100% 100%, 100% 100%;
     background-attachment: fixed;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 
   /* Noise texture overlay */
   body::before {
-    content: '';
+    content: "";
     position: fixed;
     top: 0;
     left: 0;
@@ -101,9 +130,16 @@
     height: 100%;
     opacity: 0.05;
     z-index: -1;
-    background-image: 
-      radial-gradient(circle at 25% 25%, hsla(0, 0%, 100%, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 75% 75%, hsla(0, 0%, 100%, 0.05) 0%, transparent 50%);
+    background-image: radial-gradient(
+        circle at 25% 25%,
+        hsla(0, 0%, 100%, 0.1) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 75% 75%,
+        hsla(0, 0%, 100%, 0.05) 0%,
+        transparent 50%
+      );
     background-size: 100px 100px;
     pointer-events: none;
   }
@@ -136,7 +172,7 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: hsl(var(--background));
+    /* background: hsl(var(--background)); */
   }
 
   ::-webkit-scrollbar-thumb {
@@ -152,12 +188,12 @@
 @layer components {
   /* Premium card variants */
   .card-glass {
-    @apply glass glass-hover rounded-lg p-6;
+    @apply glass glass-hover rounded-lg p-4 sm:p-6;
     background: var(--gradient-glass);
   }
 
   .card-premium {
-    @apply bg-card border border-card-border rounded-lg p-6 transition-smooth;
+    @apply bg-card border border-card-border rounded-lg p-4 sm:p-6 transition-smooth;
     background: var(--gradient-card);
   }
 
@@ -172,13 +208,18 @@
   }
 
   .metric-card::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.1), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(var(--primary) / 0.1),
+      transparent
+    );
     transition: left 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
@@ -200,15 +241,5 @@
   .btn-premium:hover {
     box-shadow: 0 4px 12px hsl(var(--primary) / 0.4);
     transform: translateY(-1px);
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border;
-  }
-
-  body {
-    @apply bg-background text-foreground;
   }
 }
